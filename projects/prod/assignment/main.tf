@@ -21,7 +21,7 @@ resource "null_resource" "cluster" {
     "sudo apt update; sudo apt install ansible -y",
     "export ANSIBLE_HOST_KEY_CHECKING=False;",
     "git clone https://github.com/YashDevops/Assignment.git",
-    "ansible-playbook -i module.ec2.private_ip Assignment/Ansible/MediaWiki/playbooks/release.yml"
+    "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i module.ec2.private_ip, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'"
     ]
   }
 }
