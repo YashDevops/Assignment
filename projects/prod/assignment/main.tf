@@ -65,12 +65,12 @@ module "bastion" {
   Project = var.Project
 }
 
-module "elb" {
-  source = "../../../modules/elb"
-  vpc_id = module.vpc.vpc_id
-  subnets = data.aws_subnet_ids.subnet.ids
-  target_ids = module.ec2.instance_id
-}
+# module "elb" {
+#   source = "../../../modules/elb"
+#   vpc_id = module.vpc.vpc_id
+#   subnets = data.aws_subnet_ids.subnet.ids
+#   target_ids = module.ec2.instance_id
+# }
 
 
 # module "ebs" {
