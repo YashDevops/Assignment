@@ -1,8 +1,8 @@
 - name: Playbook for Releasing App on MediaWiki Servers
-  hosts: web
+  hosts: all
   serial: 1
   become: true
   vars_files:
     - ../group_vars/all
   roles:
-    - ../roles/apt
+    - ../../roles/apt

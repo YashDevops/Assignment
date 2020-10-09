@@ -1,8 +1,5 @@
 #the main.tf file
 
-data "aws_subnet_ids" "subnet" {
-    vpc_id = module.vpc.vpc_id
-}
 resource "null_resource" "cluster" {
   # Bootstrap script can run on any instance of the cluster
   # So we just choose the first in this case
@@ -21,8 +18,10 @@ resource "null_resource" "cluster" {
   provisioner "remote-exec" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
-    "sudo apt update;sudo apt install ansible -y",
-    "git clone https://github.com/YashDevops/Ansible.git"
+    "sudo apt update; sudo apt install ansible -y",
+    "export ANSIBLE_HOST_KEY_CHECKING=False;",
+    "git clone https://github.com/YashDevops/Assignment.git",
+    "ansible-playbook -i module.ec2.private_ip Assignment/Ansible/MediaWiki/playbooks/release.yml"
     ]
   }
 }

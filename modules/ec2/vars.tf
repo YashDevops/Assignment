@@ -28,7 +28,7 @@ variable "sub_id" {
 
 variable "inst_type" {
   type = string
-  default = "m5.large"
+  default = "t2.small"
 }
 
 variable "description" {
