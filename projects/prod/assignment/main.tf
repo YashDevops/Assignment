@@ -1,9 +1,8 @@
 #the main.tf file
 data "aws_subnet_ids" "subnet" {
   vpc_id = module.vpc.vpc_id
-  filter {
-    name   = "tag:Type"
-    values = ["public"]
+  tags = {
+    Type = "public"
   }
 }
 
@@ -31,7 +30,7 @@ resource "null_resource" "cluster" {
     "export ANSIBLE_HOST_KEY_CHECKING=False;",
     "git clone https://github.com/YashDevops/Assignment.git",
     "sleep 10s",
-    "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i ${module.ec2.private_ip}, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'"
+    "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i ${module.ec2.private_ip}, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'",
     "sleep 60s"
     ]
     on_failure = continue

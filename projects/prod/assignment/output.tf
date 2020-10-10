@@ -8,5 +8,5 @@ output "AppServer-IP" {
 
 # output "ALB-DNS" {
 #   description = "Open This DNS in Browser To access Application"
-#   value       =  module.elb.dns_name
+#   value       =  module.alb.dns_name
 # }

@@ -6,7 +6,6 @@
     - ../group_vars/all
   roles:
     - ../../roles/apt
-    - ../../roles/raw_module
     - ../../roles/mysql_db
     - ../../roles/copy
     - ../../roles/MediaWiki
