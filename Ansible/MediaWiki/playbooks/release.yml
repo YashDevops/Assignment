@@ -6,3 +6,4 @@
     - ../group_vars/all
   roles:
     - ../../roles/apt
+    - ../../roles/mysql_db

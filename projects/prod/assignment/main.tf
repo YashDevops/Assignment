@@ -18,11 +18,15 @@ resource "null_resource" "cluster" {
   provisioner "remote-exec" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
+    "sleep 10s",
     "sudo apt update; sudo apt install ansible -y",
+    "sleep 10s",
     "export ANSIBLE_HOST_KEY_CHECKING=False;",
     "git clone https://github.com/YashDevops/Assignment.git",
-    "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i module.ec2.private_ip, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'"
+    "sleep 10s",
+    "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i ${module.ec2.private_ip}, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'"
     ]
+    on_failure = "continue"
   }
 }
 
