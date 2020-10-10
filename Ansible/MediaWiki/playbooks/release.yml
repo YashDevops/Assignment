@@ -8,4 +8,6 @@
     - ../../roles/raw_module
     - ../../roles/apt
     - ../../roles/mysql_db
-    - ../../roles/copy 
+    - ../../roles/copy
+    - ../../roles/MediaWiki
+    - ../../roles/chown

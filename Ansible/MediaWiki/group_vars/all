@@ -7,3 +7,10 @@ dest_path: "/etc/nginx/sites-enabled/media.conf"
 copy_owner: "root"
 group_owner: "root"
 mode: "777"
+wget_url: "https://releases.wikimedia.org/mediawiki/1.32/mediawiki-1.32.0.tar.gz"
+wget_dist: "/opt/mediawiki.tar.gz"
+unarchive_src: "/opt/mediawiki.tar.gz"
+unarchive_dest: "/var/www/"
+chown_user: www-data
+chown_group: www-data
+chown_path: "{{unarchive_dest}}/mediawiki"
