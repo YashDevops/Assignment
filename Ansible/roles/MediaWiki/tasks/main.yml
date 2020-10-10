@@ -9,5 +9,7 @@
   unarchive:
     src: "{{unarchive_src}}"
     dest: "{{unarchive_dest}}"
-    remote_src: yes
-    become: true
+    remote_src: "yes"
+- name : Changing Zip for naming convention
+  shell: mv /var/www/mediawiki-* /var/www/mediawiki
+  ignore_errors: yes

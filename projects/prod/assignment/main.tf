@@ -26,7 +26,7 @@ resource "null_resource" "cluster" {
     "sleep 10s",
     "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i ${module.ec2.private_ip}, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'"
     ]
-    on_failure = "continue"
+    on_failure = continue
   }
 }
 
