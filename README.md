@@ -94,14 +94,27 @@ provider "aws" {
 }
 ```
 
-3. Run the following command to run the `terraform` code
+3. Get the canonical Id for your account
+
+Run the following Command and you will get the canonical Id for you account for the `data` in `terraform` to fetch `ami` with respective filters
+
+```
+aws ec2 describe-images --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-bionic-18.04*"  --query 'Images[*].{CanonicalID:OwnerId, N:Name}' | head -n6
+```
+
+The output will looks something like this
+
+![Image of canonical_id](https://github.com/YashDevops/Assignment/blob/master/img/canonical-id-getter.png)
+
+
+4. Run the following command to run the `terraform` code
 
 ```
 terraform init
 
-terraform plan -var 'Name=mediawiki' -var 'Team=infra-team' -var 'Project=Mediawiki-Project'       #it will produce you all the resource that it is going to create
+terraform plan -var 'Name=mediawiki' -var 'Team=infra-team' -var 'Project=Mediawiki-Project'   -var 'account_id={canonical_id}'    #get the canonical_id from step 3
 
-terraform apply -var 'Name=mediawiki' -var 'Team=infra-team' -var 'Project=Mediawiki-Project' -auto-approve
+terraform apply -var 'Name=mediawiki' -var 'Team=infra-team' -var 'Project=Mediawiki-Project' -var 'account_id={canonical_id}' -auto-approve
 
 
 ```

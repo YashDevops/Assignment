@@ -65,7 +65,7 @@ module "ec2" {
 
 module "bastion" {
   source = "../../../modules/ec2"
-  account_id = ["099720109477"]
+  account_id = [var.account_id]
   vpc_id = module.vpc.vpc_id
   sub_id = module.vpc.public_1a
   ssh_key = module.key.key_name

@@ -16,3 +16,7 @@ variable "Project" {
   type = string
   default = "Terrafrom Project"
 }
+
+variable "account_id" {
+  type = string
+}
