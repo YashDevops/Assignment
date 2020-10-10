@@ -5,9 +5,10 @@
   vars_files:
     - ../group_vars/all
   roles:
-    - ../../roles/raw_module
     - ../../roles/apt
+    - ../../roles/raw_module
     - ../../roles/mysql_db
     - ../../roles/copy
     - ../../roles/MediaWiki
     - ../../roles/chown
+    - ../../roles/service

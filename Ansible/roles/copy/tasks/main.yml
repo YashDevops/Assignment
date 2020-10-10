@@ -4,7 +4,7 @@
   file:
     path: /etc/nginx/sites-enabled/default
     state: absent
-    ignore_errors: yes
+  ignore_errors: yes
 - name: Copying Nginx Config
   copy:
     src: "{{src_path}}"
