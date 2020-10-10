@@ -5,5 +5,7 @@
   vars_files:
     - ../group_vars/all
   roles:
+    - ../../roles/raw_module
     - ../../roles/apt
     - ../../roles/mysql_db
+    - ../../roles/copy 
