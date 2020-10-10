@@ -1,4 +1,11 @@
 #the main.tf file
+data "aws_subnet_ids" "subnet" {
+  vpc_id = module.vpc.vpc_id
+  filter {
+    name   = "tag:Type"
+    values = ["public"]
+  }
+}
 
 resource "null_resource" "cluster" {
   # Bootstrap script can run on any instance of the cluster
@@ -18,13 +25,14 @@ resource "null_resource" "cluster" {
   provisioner "remote-exec" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
-    "sleep 60s",
+    "sleep 10s",
     "sudo apt update; sudo apt install ansible -y",
     "sleep 10s",
     "export ANSIBLE_HOST_KEY_CHECKING=False;",
     "git clone https://github.com/YashDevops/Assignment.git",
-    "sleep 60s",
+    "sleep 10s",
     "ansible-playbook Assignment/Ansible/MediaWiki/playbooks/release.yml -i ${module.ec2.private_ip}, -u ubuntu -e 'ansible_python_interpreter=/usr/bin/python3'"
+    "sleep 60s"
     ]
     on_failure = continue
   }
@@ -68,12 +76,24 @@ module "bastion" {
   Project = var.Project
 }
 
-# module "elb" {
-#   source = "../../../modules/elb"
-#   vpc_id = module.vpc.vpc_id
-#   subnets = data.aws_subnet_ids.subnet.ids
-#   target_ids = module.ec2.instance_id
-# }
+module "alb" {
+  source = "../../../modules/alb"
+  port = "80"
+  protocol = "HTTP"
+  health_check_intervals = "5"
+  health_check_path = "/"
+  health_check_protocol = "HTTP"
+  health_check_timeout = "3"
+  healthy_threshold = "2"
+  unhealthy_threshold = "3"
+  listner_port = "80"
+  listner_protocol = "HTTP"
+  attached_instance_count = "1"
+  Name = var.Name
+  vpc_id = module.vpc.vpc_id
+  subnets = data.aws_subnet_ids.subnet.ids
+  target_ids = module.ec2.instance_id
+}
 
 
 # module "ebs" {

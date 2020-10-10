@@ -53,3 +53,8 @@ variable "BussinessUnit" {
 variable "Project" {
   type = string
 }
+
+variable "Type" {
+  type = string
+  default = "public"
+}

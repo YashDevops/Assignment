@@ -25,6 +25,7 @@ resource "aws_subnet" "assignment-public-1a" {
     BussinessUnit = var.BussinessUnit,
     Project = var.Project,
     Team = var.Team
+    Type = var.Type
   }
 }
 resource "aws_subnet" "assignment-public-1b" {
@@ -37,6 +38,7 @@ resource "aws_subnet" "assignment-public-1b" {
     BussinessUnit = var.BussinessUnit,
     Project = var.Project,
     Team = var.Team
+    Type = var.Type
   }
 }
 
@@ -50,6 +52,7 @@ resource "aws_subnet" "assignment-public-1c" {
     BussinessUnit = var.BussinessUnit,
     Project = var.Project,
     Team = var.Team
+    Type = var.Type
   }
 }
 
