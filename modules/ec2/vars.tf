@@ -27,12 +27,12 @@ variable "sub_id" {
 }
 
 variable "inst_type" {
-  type = string
+  type    = string
   default = "t2.small"
 }
 
 variable "description" {
-  type = string
+  type    = string
   default = "This security group is for ssh only"
 }
 
@@ -41,6 +41,6 @@ variable "ssh_key" {
 }
 
 variable "no_of_inst" {
-  type = string
+  type    = string
   default = "1"
 }

@@ -3,7 +3,7 @@ variable "availability_zone" {
 }
 
 variable "size" {
-  type = string
+  type    = string
   default = "20"
 }
 
@@ -16,7 +16,7 @@ variable "ebs_type" {
 }
 
 variable "device_name" {
-  type = string
+  type    = string
   default = "/dev/xvdb"
 }
 

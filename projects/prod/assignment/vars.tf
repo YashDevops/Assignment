@@ -3,17 +3,17 @@ variable "Name" {
 }
 
 variable "Team" {
-  type = string
+  type    = string
   default = "Infra"
 }
 
 variable "BussinessUnit" {
-  type = string
+  type    = string
   default = "Tech"
 }
 
 variable "Project" {
-  type = string
+  type    = string
   default = "Terrafrom Project"
 }
 
