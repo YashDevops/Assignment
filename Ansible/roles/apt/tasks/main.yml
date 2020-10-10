@@ -3,3 +3,11 @@
 #@author yash kumar shah yash kumar shah
 - name: Installing Apt Repo
   apt: name={{repo_list}} state=present update_cache=yes
+- name: Install the MySQL-python through pip
+  sudo: yes
+  pip:
+    name: "{{ item }}"
+    state: forcereinstall
+  with_items:
+    - pip
+    - MySQL-python
